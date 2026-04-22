@@ -330,7 +330,7 @@ def main() -> None:
 
     best_record = min(topk_records, key=lambda x: x["val_rmse"])
     best_path = output_dir / best_record["path"]
-    checkpoint = torch.load(best_path, map_location=device)
+    checkpoint = torch.load(best_path, map_location=device, weights_only=False)
     model.load_state_dict(checkpoint["model_state_dict"])
     test_metrics = evaluate(model, test_loader, device, target_scaler)
 
