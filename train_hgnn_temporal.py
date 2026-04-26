@@ -350,10 +350,10 @@ def main() -> None:
     )
 
     val_pred_scaled, val_true_scaled = collect_predictions_scaled(model, val_loader, device)
-        val_pred = target_scaler.inverse_transform(val_pred_scaled.reshape(-1, 1)).reshape(-1)
-        val_true = target_scaler.inverse_transform(val_true_scaled.reshape(-1, 1)).reshape(-1)
-        val_pred_path = output_dir / "val_predictions_best.npz"
-        np.savez(
+    val_pred = target_scaler.inverse_transform(val_pred_scaled.reshape(-1, 1)).reshape(-1)
+    val_true = target_scaler.inverse_transform(val_true_scaled.reshape(-1, 1)).reshape(-1)
+    val_pred_path = output_dir / "val_predictions_best.npz"
+    np.savez(
         val_pred_path,
         y_pred=val_pred,
         y_true=val_true,

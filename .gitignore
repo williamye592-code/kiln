@@ -21,3 +21,8 @@ Thumbs.db
 # VS Code settings
 .vscode/*.zip
 data/
+huizhuanyao_data.zip
+outputs_hgnn_tt/
+outputs_baselines/
+*.npz
+*.pt
