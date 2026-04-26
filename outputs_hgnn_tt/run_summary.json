@@ -1,13 +1,13 @@
 {
   "args": {
-    "data_dir": "huizhuanyao_data",
+    "data_dir": "data/huizhuanyao_data",
     "seq_len": 60,
-    "horizon": 30,
-    "forecast_seconds": 300.0,
+    "horizon": 60,
+    "forecast_seconds": 600.0,
     "train_ratio": 0.7,
     "val_ratio": 0.15,
     "batch_size": 128,
-    "epochs": 100,
+    "epochs": 1,
     "lr": 0.001,
     "weight_decay": 0.0001,
     "d_model": 64,
@@ -19,45 +19,26 @@
     "seed": 42,
     "output_dir": "outputs_hgnn_tt",
     "base_interval_seconds": 10.0,
-    "effective_forecast_seconds": 300.0,
+    "effective_forecast_seconds": 600.0,
     "co_history_steps": 60,
     "effective_co_history_seconds": 600.0
   },
-  "best_val_rmse": 0.003124401969656223,
-  "best_checkpoint": "epoch_022_valrmse_0.003124.pt",
+  "best_val_rmse": 0.01921040411062665,
+  "best_checkpoint": "epoch_001_valrmse_0.019210.pt",
   "topk_checkpoints": [
     {
-      "epoch": 22,
-      "val_rmse": 0.003124401969656223,
-      "path": "epoch_022_valrmse_0.003124.pt"
-    },
-    {
-      "epoch": 38,
-      "val_rmse": 0.0032151795494941683,
-      "path": "epoch_038_valrmse_0.003215.pt"
-    },
-    {
-      "epoch": 27,
-      "val_rmse": 0.003218710298341823,
-      "path": "epoch_027_valrmse_0.003219.pt"
-    },
-    {
-      "epoch": 78,
-      "val_rmse": 0.0032964399398471376,
-      "path": "epoch_078_valrmse_0.003296.pt"
-    },
-    {
-      "epoch": 26,
-      "val_rmse": 0.0033238744650586237,
-      "path": "epoch_026_valrmse_0.003324.pt"
+      "epoch": 1,
+      "val_rmse": 0.01921040411062665,
+      "path": "epoch_001_valrmse_0.019210.pt"
     }
   ],
   "training_history_file": "training_history.json",
+  "val_prediction_file": "val_predictions_best.npz",
   "test_metrics": {
-    "rmse": 0.0027288381130273257,
-    "mae": 0.0022209847811609507,
-    "mape": 184325.89111328125,
-    "r2": 0.801437149901363
+    "rmse": 0.012937798709188144,
+    "mae": 0.01047524157911539,
+    "mape": 787318.1875,
+    "r2": -3.4607261007894294
   },
   "node_order": [
     "kiln_head",

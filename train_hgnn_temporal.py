@@ -334,11 +334,26 @@ def main() -> None:
     model.load_state_dict(checkpoint["model_state_dict"])
     test_metrics = evaluate(model, test_loader, device, target_scaler)
 
-    val_pred_scaled, val_true_scaled = collect_predictions_scaled(model, val_loader, device)
-    val_pred = target_scaler.inverse_transform(val_pred_scaled.reshape(-1, 1)).reshape(-1)
-    val_true = target_scaler.inverse_transform(val_true_scaled.reshape(-1, 1)).reshape(-1)
-    val_pred_path = output_dir / "val_predictions_best.npz"
+    # Save test predictions for True vs Prediction analysis
+    test_pred_scaled, test_true_scaled = collect_predictions_scaled(model, test_loader, device)
+    test_pred = target_scaler.inverse_transform(test_pred_scaled.reshape(-1, 1)).reshape(-1)
+    test_true = target_scaler.inverse_transform(test_true_scaled.reshape(-1, 1)).reshape(-1)
+    test_pred_path = output_dir / "test_predictions_best.npz"
+
     np.savez(
+        test_pred_path,
+        y_pred=test_pred,
+        y_true=test_true,
+        y_pred_scaled=test_pred_scaled,
+        y_true_scaled=test_true_scaled,
+        checkpoint_name=best_record["path"],
+    )
+
+    val_pred_scaled, val_true_scaled = collect_predictions_scaled(model, val_loader, device)
+        val_pred = target_scaler.inverse_transform(val_pred_scaled.reshape(-1, 1)).reshape(-1)
+        val_true = target_scaler.inverse_transform(val_true_scaled.reshape(-1, 1)).reshape(-1)
+        val_pred_path = output_dir / "val_predictions_best.npz"
+        np.savez(
         val_pred_path,
         y_pred=val_pred,
         y_true=val_true,
