@@ -68,6 +68,7 @@ def build_samples_per_file(
     file_arrays: List[np.ndarray],
     seq_len: int,
     horizon: int,
+    interval_steps: int = 180,
 ) -> Tuple[np.ndarray, np.ndarray]:
     x_list = []
     y_list = []

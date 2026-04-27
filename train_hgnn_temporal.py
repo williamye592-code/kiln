@@ -124,6 +124,12 @@ def main() -> None:
         default=300.0,
         help="Forecast horizon in seconds. It will be converted to horizon steps using data interval.",
     )
+    parser.add_argument(
+        "--interval_minutes",
+        type=float,
+        default=30.0,
+        help="Window size in minutes for interval-averaged future delta CO target.",
+    )
     parser.add_argument("--train_ratio", type=float, default=0.7)
     parser.add_argument("--val_ratio", type=float, default=0.15)
     parser.add_argument("--batch_size", type=int, default=128)
@@ -168,6 +174,8 @@ def main() -> None:
     args.effective_forecast_seconds = float(args.horizon * base_interval_seconds)
     args.co_history_steps = int(max(1, round((args.co_history_minutes * 60.0) / base_interval_seconds)))
     args.effective_co_history_seconds = float(args.co_history_steps * base_interval_seconds)
+    args.interval_steps = int(max(1, round((args.interval_minutes * 60.0) / base_interval_seconds)))
+    args.effective_interval_seconds = float(args.interval_steps * base_interval_seconds)
 
     print(
         f"Using horizon_steps={args.horizon}, base_interval_seconds={args.base_interval_seconds:.3f}, "
@@ -176,6 +184,10 @@ def main() -> None:
     print(
         f"Using co_history_steps={args.co_history_steps}, "
         f"effective_co_history_seconds={args.effective_co_history_seconds:.3f}"
+    )
+    print(
+        f"Using interval_steps={args.interval_steps}, "
+        f"effective_interval_seconds={args.effective_interval_seconds:.3f}"
     )
 
     file_splits = split_file_arrays(
@@ -187,16 +199,19 @@ def main() -> None:
         file_splits["train"],
         seq_len=args.seq_len,
         horizon=args.horizon,
+        interval_steps=args.interval_steps,
     )
     X_val, y_val = build_samples_per_file(
         file_splits["val"],
         seq_len=args.seq_len,
         horizon=args.horizon,
+        interval_steps=args.interval_steps,
     )
     X_test, y_test = build_samples_per_file(
         file_splits["test"],
         seq_len=args.seq_len,
         horizon=args.horizon,
+        interval_steps=args.interval_steps,
     )
 
     splits = {
