@@ -36,3 +36,6 @@ Thumbs.db
 outputs_*/
 *.npz
 *.json
+
+# Processed private datasets
+outputs/processed/

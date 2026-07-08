@@ -1,15 +1,47 @@
 # Data configuration for EAAI kiln early-warning framework
 
-raw_data_path: "data/private/raw_kiln_data.csv"
+raw_data_dir: "data/private/huizhuanyao_data"
 processed_data_dir: "outputs/processed"
 
-time_col: "timestamp"
-target_col: "CO"
+has_header: false
+encoding: "utf-8-sig"
 
 sampling_seconds: 10
-
-train_end: "2024-01-20"
-val_end: "2024-01-21"
-test_start: "2024-01-21"
-
 session_gap_minutes: 5
+
+columns:
+  row_id: 0
+  time: 1
+  co: 2
+  drum_level_1: 3
+  drum_level_2: 4
+  drum_level_3: 5
+  main_motor_current: 6
+  south_kiln_main_motor_freq: 7
+  whrb_drum_pressure: 8
+  whrb_outlet_pressure: 9
+  esp_inlet_pressure: 10
+  esp_outlet_pressure: 11
+  fan_outlet_pressure: 12
+  disc_feeder_freq: 13
+  kiln_tail_temp: 14
+  kiln_head_temp: 15
+  whrb_inlet_temp: 16
+  esp_inlet_temp: 17
+  esp_outlet_temp: 18
+  fan_outlet_temp: 19
+
+train_end_date: "2024-01-17"
+val_end_date: "2024-01-20"
+test_start_date: "2024-01-21"
+
+past_baseline_minutes: 240
+min_past_minutes: 30
+
+future_start_minutes: 60
+future_end_minutes: 240
+future_quantile: 0.95
+
+event_threshold: 0.20
+event_merge_gap_minutes: 30
+min_event_duration_minutes: 1
