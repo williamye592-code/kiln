@@ -31,3 +31,8 @@ outputs/tables/*.csv
 # OS
 .DS_Store
 Thumbs.db
+
+# Temporary experiment outputs
+outputs_*/
+*.npz
+*.json
