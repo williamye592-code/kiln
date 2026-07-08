@@ -1,0 +1,66 @@
+# HGNN-risk model configuration for EAAI kiln early-warning framework
+
+input_path: "outputs/predictions/risk_dataset_with_scores.csv"
+output_path: "outputs/predictions/risk_dataset_with_all_scores.csv"
+metrics_path: "outputs/metrics/hgnn_risk_metrics.csv"
+
+target_col: "risk_target"
+score_col: "hgnn_score"
+
+time_col: "timestamp"
+split_col: "split"
+period_type_col: "period_type"
+
+# Use past sensor sequence to predict future risk target.
+seq_len: 60          # 60 points = 10 minutes at 10-sec sampling
+batch_size: 256
+epochs: 30
+lr: 0.001
+weight_decay: 0.0001
+patience: 6
+seed: 42
+
+hidden_dim: 64
+node_embed_dim: 32
+dropout: 0.10
+
+# Process nodes and their raw feature columns.
+nodes:
+  kiln_head:
+    - kiln_head_temp
+    - main_motor_current
+    - south_kiln_main_motor_freq
+  kiln_tail:
+    - kiln_tail_temp
+  boiler:
+    - whrb_drum_pressure
+    - whrb_outlet_pressure
+    - whrb_inlet_temp
+    - drum_level_1
+    - drum_level_2
+    - drum_level_3
+  esp:
+    - esp_inlet_pressure
+    - esp_outlet_pressure
+    - esp_inlet_temp
+    - esp_outlet_temp
+  fan:
+    - fan_outlet_pressure
+    - fan_outlet_temp
+  feed:
+    - disc_feeder_freq
+  co_state:
+    - co_raw
+    - co_baseline
+    - co_relative
+
+# Mechanism-inspired hyperedges.
+hyperedges:
+  - [feed, kiln_head]
+  - [kiln_head, kiln_tail]
+  - [kiln_tail, boiler]
+  - [boiler, esp]
+  - [esp, fan]
+  - [kiln_head, kiln_tail, boiler]
+  - [boiler, esp, fan]
+  - [co_state, kiln_head, kiln_tail, boiler, esp, fan]
