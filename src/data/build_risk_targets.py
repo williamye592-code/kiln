@@ -279,6 +279,58 @@ def add_event_ids(
     return df
 
 
+
+def add_period_type(df: pd.DataFrame) -> pd.DataFrame:
+    """Mark each date as event-rich or normal operation based on event labels."""
+    df = df.copy()
+
+    daily_event_count = (
+        df[df["is_valid_sample"]]
+        .groupby("date")["event_id"]
+        .apply(lambda s: s[s >= 0].nunique())
+        .to_dict()
+    )
+
+    date_to_period_type = {
+        date: "event_rich" if n_events > 0 else "normal_operation"
+        for date, n_events in daily_event_count.items()
+    }
+
+    df["period_type"] = df["date"].map(date_to_period_type).fillna("unused")
+    return df
+
+
+def make_daily_audit(df: pd.DataFrame) -> pd.DataFrame:
+    """Create date-level audit table for split and event/normal-period analysis."""
+    valid = df[df["is_valid_sample"]].copy()
+
+    daily = (
+        valid.groupby("date")
+        .agg(
+            split=("split", "first"),
+            period_type=("period_type", "first"),
+            n_rows=("timestamp", "size"),
+            start_time=("timestamp", "min"),
+            end_time=("timestamp", "max"),
+            co_raw_mean=("co_raw", "mean"),
+            co_raw_std=("co_raw", "std"),
+            co_raw_max=("co_raw", "max"),
+            co_relative_mean=("co_relative", "mean"),
+            co_relative_std=("co_relative", "std"),
+            co_relative_p95=("co_relative", lambda x: x.quantile(0.95)),
+            co_relative_p99=("co_relative", lambda x: x.quantile(0.99)),
+            co_relative_max=("co_relative", "max"),
+            risk_target_p95=("risk_target", lambda x: x.quantile(0.95)),
+            risk_target_p99=("risk_target", lambda x: x.quantile(0.99)),
+            risk_target_max=("risk_target", "max"),
+            n_event_points=("is_event_point", "sum"),
+            n_events=("event_id", lambda s: s[s >= 0].nunique()),
+        )
+        .reset_index()
+    )
+
+    return daily
+
 def make_summary(df: pd.DataFrame, base_interval_seconds: float) -> pd.DataFrame:
     rows = []
 
@@ -380,14 +432,19 @@ def main() -> None:
         & df["split"].isin(["train", "val", "test"])
     )
 
+    df = add_period_type(df)
+
     summary = make_summary(df, base_interval_seconds)
+    daily_audit = make_daily_audit(df)
 
     csv_path = processed_data_dir / "risk_dataset.csv"
     summary_path = processed_data_dir / "data_summary.csv"
+    daily_audit_path = processed_data_dir / "daily_audit.csv"
     meta_path = processed_data_dir / "risk_dataset_metadata.json"
 
     df.to_csv(csv_path, index=False)
     summary.to_csv(summary_path, index=False)
+    daily_audit.to_csv(daily_audit_path, index=False)
 
     metadata = {
         "n_raw_files": len(csv_files),
@@ -403,6 +460,7 @@ def main() -> None:
 
     print(f"Saved risk dataset: {csv_path}")
     print(f"Saved data summary: {summary_path}")
+    print(f"Saved daily audit: {daily_audit_path}")
     print(f"Saved metadata: {meta_path}")
     print()
     print(summary)
