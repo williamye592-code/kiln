@@ -39,3 +39,6 @@ outputs_*/
 
 # Processed private datasets
 outputs/processed/
+
+# Generated policy evaluation outputs
+outputs/policy_eval/
