@@ -1,16 +1,58 @@
-# Warning policy configuration
+# Warning policy configuration for EAAI event-level evaluation
 
-thresholds: [0.05, 0.10, 0.15, 0.20, 0.30, 0.40]
+input_path: "outputs/processed/risk_dataset.csv"
+output_dir: "outputs/policy_eval"
 
-merge_gap_minutes: [30, 60]
-cooldown_minutes: [30, 60]
-max_window_minutes: [60, 120]
+time_col: "timestamp"
+split_col: "split"
+period_type_col: "period_type"
+event_id_col: "event_id"
 
-event_lead_horizon_minutes: [60, 120, 180, 240]
+# For now we evaluate two available scores:
+# co_relative = current deviation score
+# risk_target = oracle future-risk score, used only as a sanity upper bound
+score_columns:
+  - co_relative
+  - risk_target
 
-primary_metrics:
-  - event_detection_rate
-  - median_lead_time
-  - false_windows_per_day
-  - active_minutes_per_day
-  - precision
+# Later we will add:
+# - rf_score
+# - hgnn_score
+# - transformer_score
+# - fusion_score
+
+splits:
+  - val
+  - test
+
+period_types:
+  - all
+  - event_rich
+  - normal_operation
+
+thresholds:
+  - 0.005
+  - 0.01
+  - 0.02
+  - 0.05
+  - 0.10
+  - 0.15
+  - 0.20
+  - 0.30
+  - 0.40
+  - 0.50
+  - 0.60
+
+merge_gap_minutes:
+  - 30
+
+cooldown_minutes:
+  - 30
+
+max_window_minutes:
+  - 120
+
+# A warning is counted as detecting an event if it starts before the event
+# and overlaps the pre-event actionable horizon.
+lead_horizon_minutes: 240
+min_lead_minutes: 0
