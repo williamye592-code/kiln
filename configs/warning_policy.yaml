@@ -1,6 +1,6 @@
 # Warning policy configuration for EAAI event-level evaluation
 
-input_path: "outputs/processed/risk_dataset.csv"
+input_path: "outputs/predictions/risk_dataset_with_scores.csv"
 output_dir: "outputs/policy_eval"
 
 time_col: "timestamp"
@@ -14,6 +14,7 @@ event_id_col: "event_id"
 score_columns:
   - co_relative
   - risk_target
+  - rf_score
 
 # Later we will add:
 # - rf_score
