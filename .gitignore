@@ -1,28 +1,33 @@
-# Python cache
+# Python
 __pycache__/
-*.py[cod]
-*.pyo
-*.pt
-*.png
+*.pyc
+.ipynb_checkpoints/
+
+# Environments
+.env
+.venv/
+venv/
+
+# Data - do not upload private industrial data
+data/raw/
+data/private/
 *.csv
 *.xlsx
+*.xls
+*.parquet
+*.pkl
 
-# Virtual environment
-venv/
-.env/
+# Model outputs
+outputs/checkpoints/
+*.pt
+*.pth
+*.ckpt
 
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints
+# Large generated outputs
+outputs/predictions/*.csv
+outputs/metrics/*.csv
+outputs/tables/*.csv
 
-# System files
+# OS
 .DS_Store
 Thumbs.db
-
-# VS Code settings
-.vscode/*.zip
-data/
-huizhuanyao_data.zip
-outputs_hgnn_tt/
-outputs_baselines/
-*.npz
-*.pt

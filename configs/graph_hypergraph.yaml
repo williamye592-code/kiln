@@ -1,0 +1,21 @@
+# Mechanism-guided hypergraph configuration
+
+nodes:
+  - feed
+  - kiln_head
+  - kiln_tail
+  - boiler
+  - esp
+  - fan
+
+hyperedges:
+  process_flow:
+    - [feed, kiln_head]
+    - [kiln_head, kiln_tail]
+    - [kiln_tail, boiler]
+    - [boiler, esp]
+    - [esp, fan]
+
+  high_order_coupling:
+    - [kiln_head, kiln_tail, boiler]
+    - [boiler, esp, fan]

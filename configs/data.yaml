@@ -1,0 +1,15 @@
+# Data configuration for EAAI kiln early-warning framework
+
+raw_data_path: "data/private/raw_kiln_data.csv"
+processed_data_dir: "outputs/processed"
+
+time_col: "timestamp"
+target_col: "CO"
+
+sampling_seconds: 10
+
+train_end: "2024-01-20"
+val_end: "2024-01-21"
+test_start: "2024-01-21"
+
+session_gap_minutes: 5

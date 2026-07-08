@@ -1,0 +1,16 @@
+# HGNN temporal model configuration
+
+window_minutes: 60
+forecast_horizon_minutes: 120
+
+hidden_dim: 64
+num_hgnn_layers: 2
+num_transformer_layers: 2
+num_attention_heads: 4
+dropout: 0.1
+
+learning_rate: 0.001
+batch_size: 64
+max_epochs: 100
+early_stopping_patience: 10
+seed: 42

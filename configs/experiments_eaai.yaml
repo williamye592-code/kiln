@@ -1,0 +1,20 @@
+# EAAI experiment registry
+
+main_models:
+  - current_co_threshold
+  - ewma
+  - cusum
+  - random_forest
+  - transformer
+  - gnn_tt
+  - hgnn_tt
+  - rf_hgnn_fusion
+
+ablation_models:
+  - no_graph
+  - pairwise_graph
+  - hypergraph_without_high_order_edges
+  - full_hypergraph
+  - no_co_history
+  - no_node_attention
+  - no_temporal_attention

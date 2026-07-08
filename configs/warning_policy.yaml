@@ -1,0 +1,16 @@
+# Warning policy configuration
+
+thresholds: [0.05, 0.10, 0.15, 0.20, 0.30, 0.40]
+
+merge_gap_minutes: [30, 60]
+cooldown_minutes: [30, 60]
+max_window_minutes: [60, 120]
+
+event_lead_horizon_minutes: [60, 120, 180, 240]
+
+primary_metrics:
+  - event_detection_rate
+  - median_lead_time
+  - false_windows_per_day
+  - active_minutes_per_day
+  - precision
