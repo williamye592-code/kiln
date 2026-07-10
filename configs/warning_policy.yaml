@@ -1,71 +1,55 @@
-# Warning policy configuration for EAAI event-level evaluation
-
-input_path: "outputs/predictions/risk_dataset_with_all_scores.csv"
-output_dir: "outputs/policy_eval"
-
-time_col: "timestamp"
-split_col: "split"
-period_type_col: "period_type"
-event_id_col: "event_id"
-
-# For now we evaluate two available scores:
-# co_relative = current deviation score
-# risk_target = oracle future-risk score, used only as a sanity upper bound
+input_path: outputs/predictions/risk_dataset_with_policy_scores.csv
+output_dir: outputs/policy_eval
+time_col: timestamp
+split_col: split
+period_type_col: period_type
+event_id_col: event_id
 score_columns:
-  - co_relative
-  - risk_target
-  - rf_score
-  - hgnn_score
-  - fusion_score
-
-# Later we will add:
-# - rf_score
-# - hgnn_score
-# - transformer_score
-# - fusion_score
-
+- co_relative
+- risk_target
+- rf_score
+- hgnn_score
+- fusion_score
+- hgnn_policy_score
+- calibrated_fusion_score
 splits:
-  - val
-  - test
-
+- val
+- test
 period_types:
-  - all
-  - event_rich
-  - normal_operation
-
+- all
+- event_rich
+- normal_operation
 thresholds:
-  - 0.001
-  - 0.002
-  - 0.005
-  - 0.008
-  - 0.010
-  - 0.012
-  - 0.014
-  - 0.016
-  - 0.018
-  - 0.020
-  - 0.025
-  - 0.030
-  - 0.040
-  - 0.050
-  - 0.10
-  - 0.15
-  - 0.20
-  - 0.30
-  - 0.40
-  - 0.50
-  - 0.60
-
+- 0.001
+- 0.002
+- 0.005
+- 0.008
+- 0.01
+- 0.012
+- 0.014
+- 0.016
+- 0.018
+- 0.02
+- 0.025
+- 0.03
+- 0.04
+- 0.05
+- 0.075
+- 0.1
+- 0.15
+- 0.2
+- 0.3
+- 0.4
+- 0.5
+- 0.6
+- 0.7
+- 0.8
+- 0.9
 merge_gap_minutes:
-  - 30
-
+- 30
 cooldown_minutes:
-  - 30
-
+- 30
 max_window_minutes:
-  - 120
-
-# A warning is counted as detecting an event if it starts before the event
-# and overlaps the pre-event actionable horizon.
+- 120
 lead_horizon_minutes: 240
 min_lead_minutes: 30
