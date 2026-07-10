@@ -42,8 +42,8 @@ REPRESENTATIVE_POLICIES = [
     },
     {
         "method": "CO-gated HGNN fusion",
-        "score_col": "fusion_score",
-        "threshold": 0.016,
+        "score_col": "calibrated_fusion_score",
+        "threshold": 0.005,
         "role": "proposed robust fusion",
     },
     {

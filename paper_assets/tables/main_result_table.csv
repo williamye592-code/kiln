@@ -1,6 +1,6 @@
 method,score_col,threshold,role,event_rich_days,event_rich_events,event_rich_warning_windows,event_detection_rate,median_lead_minutes,warning_precision_event_rich,false_windows_per_event_rich_day,active_minutes_per_event_rich_day,normal_operation_days,normal_warning_windows,false_windows_per_normal_day,active_minutes_per_normal_day
-Current relative CO,co_relative,0.05,current-state baseline,4,17.0,24,0.8235,193.0,0.625,2.25,411.8458,19,0,0.0,0.0
-Random forest risk score,rf_score,0.3,flat ML baseline,4,17.0,13,0.6471,138.0,0.6154,1.25,270.475,19,28,1.4737,172.3684
-HGNN-risk score,hgnn_score,0.2,mechanism-guided learned score,4,17.0,13,0.6471,182.6667,0.9231,0.25,232.1333,19,22,1.1579,138.9474
-CO-gated HGNN fusion,fusion_score,0.016,proposed robust fusion,4,17.0,23,0.8235,179.6667,0.6087,2.25,371.2292,19,0,0.0,0.0
-Oracle future risk,risk_target,0.2,non-deployable upper bound,4,17.0,9,0.5294,195.1833,1.0,0.0,199.875,19,0,0.0,0.0
+Current relative CO,co_relative,0.05,current-state baseline,4,17,24,0.8235,193.0,0.625,2.25,411.8458,19,0,0.0,0.0
+Random forest risk score,rf_score,0.3,flat ML baseline,4,17,13,0.6471,138.0,0.6154,1.25,270.475,19,28,1.4737,172.3684
+HGNN-risk score,hgnn_score,0.2,mechanism-guided learned score,4,17,13,0.6471,182.6667,0.9231,0.25,232.1333,19,22,1.1579,138.9474
+CO-gated HGNN fusion,fusion_score,0.016,proposed robust fusion,4,17,24,0.8824,193.0,0.625,2.25,440.9,19,3,0.1579,4.1579
+Oracle future risk,risk_target,0.2,non-deployable upper bound,4,17,9,0.5294,195.1833,1.0,0.0,199.875,19,0,0.0,0.0
