@@ -16,6 +16,7 @@ score_columns:
   - risk_target
   - rf_score
   - hgnn_score
+  - fusion_score
 
 # Later we will add:
 # - rf_score
@@ -33,6 +34,8 @@ period_types:
   - normal_operation
 
 thresholds:
+  - 0.001
+  - 0.002
   - 0.005
   - 0.01
   - 0.02
