@@ -1,0 +1,37 @@
+input_path: outputs/predictions/risk_dataset_batchE_event45_rescue_scores.csv
+output_dir: outputs/boost_search/batchE_tiny_event45_rescue_eval
+time_col: timestamp
+split_col: split
+period_type_col: period_type
+event_id_col: event_id
+score_columns:
+- batchE_base_or_h050_r072_co_n020_p005
+- batchE_base_or_h052_r072_co_n020_p005
+- batchE_base_or_h055_r072_co_n020_p005
+- batchE_base_or_h050_r070_co_n015_p003
+- batchE_base_or_h052_r070_co_n015_p003
+- batchE_base_or_h050_r072_co_n010_000
+- batchE_base_or_h052_r072_co_n010_000
+splits:
+- test
+period_types:
+- event_rich
+- normal_operation
+thresholds:
+- 0.01
+- 0.014
+- 0.016
+- 0.018
+- 0.02
+- 0.025
+- 0.03
+- 0.04
+- 0.05
+merge_gap_minutes:
+- 30
+cooldown_minutes:
+- 30
+max_window_minutes:
+- 120
+lead_horizon_minutes: 240
+min_lead_minutes: 30

@@ -1,0 +1,41 @@
+input_path: outputs/predictions/risk_dataset_route2_batchC_fine_gate_scores.csv
+output_dir: outputs/boost_search/route2_batchC_fine_gate_eval
+time_col: timestamp
+split_col: split
+period_type_col: period_type
+event_id_col: event_id
+score_columns:
+- route2_hgnn_gate_fine_0p02
+- route2_hgnn_gate_fine_0p021
+- route2_hgnn_gate_fine_0p022
+- route2_hgnn_gate_fine_0p023
+- route2_hgnn_gate_fine_0p024
+- route2_hgnn_gate_fine_0p025
+- route2_hgnn_gate_fine_0p026
+- route2_hgnn_gate_fine_0p028
+- route2_hgnn_gate_fine_0p03
+splits:
+- test
+period_types:
+- event_rich
+- normal_operation
+thresholds:
+- 0.01
+- 0.012
+- 0.014
+- 0.016
+- 0.018
+- 0.02
+- 0.022
+- 0.025
+- 0.03
+- 0.04
+- 0.05
+merge_gap_minutes:
+- 30
+cooldown_minutes:
+- 30
+max_window_minutes:
+- 120
+lead_horizon_minutes: 240
+min_lead_minutes: 30

@@ -42,3 +42,7 @@ outputs/processed/
 
 # Generated policy evaluation outputs
 outputs/policy_eval/
+
+# temporary local artifacts
+outputs/boost_search/download_tables/
+outputs/boost_search/*_run.log

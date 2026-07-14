@@ -1,0 +1,8 @@
+metric,CO-gated HGNN,Low-temperature consensus rescue,delta
+event_detection_rate,0.8823529411764706,0.9411764705882352,0.05882352941176461
+detected_events,15.0,15.999999999999998,0.9999999999999982
+median_lead_minutes,191.0,196.5,5.5
+warning_precision_event_rich,0.6666666666666666,0.7083333333333334,0.04166666666666674
+false_windows_per_event_rich_day,2.0,1.75,-0.25
+active_minutes_per_event_rich_day,420.3125,429.2708333333333,8.958333333333314
+normal_warning_windows,0.0,0.0,0.0

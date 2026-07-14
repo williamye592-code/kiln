@@ -1,0 +1,45 @@
+input_path: outputs/predictions/risk_dataset_batchG_kiln_head_gated_rescue_scores.csv
+output_dir: outputs/boost_search/batchG_kiln_head_gated_rescue_eval
+time_col: timestamp
+split_col: split
+period_type_col: period_type
+event_id_col: event_id
+score_columns:
+- batchG_base_or_h052_r072_co_n010_000_kht_le190
+- batchG_base_or_h052_r072_co_n010_n002_kht_le190
+- batchG_base_or_h050_r072_co_n020_p005_kht_le190
+- batchG_base_or_h052_r072_co_n010_000_kht_le185
+- batchG_base_or_h052_r072_co_n010_n002_kht_le185
+- batchG_base_or_h050_r072_co_n020_p005_kht_le185
+- batchG_base_or_h052_r072_co_n010_000_kht_le180
+- batchG_base_or_h052_r072_co_n010_n002_kht_le180
+- batchG_base_or_h050_r072_co_n020_p005_kht_le180
+- batchG_base_or_h052_r072_co_n010_000_kht_le175
+- batchG_base_or_h052_r072_co_n010_n002_kht_le175
+- batchG_base_or_h050_r072_co_n020_p005_kht_le175
+- batchG_base_or_h054_r073_co_n010_000_kht_le190
+- batchG_base_or_h054_r073_co_n010_000_kht_le185
+- batchG_base_or_h054_r073_co_n010_000_kht_le180
+splits:
+- test
+period_types:
+- event_rich
+- normal_operation
+thresholds:
+- 0.01
+- 0.014
+- 0.016
+- 0.018
+- 0.02
+- 0.025
+- 0.03
+- 0.04
+- 0.05
+merge_gap_minutes:
+- 30
+cooldown_minutes:
+- 30
+max_window_minutes:
+- 120
+lead_horizon_minutes: 240
+min_lead_minutes: 30

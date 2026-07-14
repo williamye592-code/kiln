@@ -1,0 +1,7 @@
+method,role,score_col,threshold,event_rich_events,detected_event_rich_events,event_rich_warning_windows,event_detection_rate,median_lead_minutes,lead_q25_minutes,lead_q75_minutes,warning_precision_event_rich,false_windows_per_event_rich_day,active_minutes_per_event_rich_day,normal_operation_days,normal_warning_windows,false_windows_per_normal_day,active_minutes_per_normal_day,full_labeled_events,overall_detected_events,overall_detection_rate,lead_censored_events,actionable_evaluable_events,actionable_detected_events,actionable_detection_rate,remaining_actionable_missed_events
+Current relative CO,current-state baseline,co_relative,0.05,17,14,24,0.824,193.0,170.12,231.5,0.625,2.25,411.85,19,0,0.0,0.0,,,,,,,,
+Random forest risk score,flat ML baseline,rf_score,0.3,17,11,13,0.647,138.0,78.5,240.0,0.615,1.25,270.48,19,28,1.47,172.37,,,,,,,,
+HGNN-risk score,mechanism-guided learned score,hgnn_score,0.2,17,11,13,0.647,182.67,80.5,233.5,0.923,0.25,232.13,19,22,1.16,138.95,,,,,,,,
+CO-gated HGNN,previous proposed score,route2_hgnn_gate_fine_0p023,0.018,17,15,24,0.882,191.0,170.0,233.5,0.667,2.0,420.31,19,0,0.0,0.0,,,,,,,,
+Low-temperature consensus rescue,proposed final score,batchG_base_or_h052_r072_co_n010_n002_kht_le190,0.018,17,16,24,0.941,196.5,162.5,234.0,0.708,1.75,429.27,19,0,0.0,0.0,19.0,18.0,0.947,1.0,18.0,18.0,1.0,0.0
+Future-target reference,non-deployable future-target reference,risk_target,0.2,17,9,9,0.529,195.18,136.0,222.0,1.0,0.0,199.88,19,0,0.0,0.0,,,,,,,,

@@ -1,0 +1,62 @@
+input_path: outputs/predictions/risk_dataset_batchD3_consensus_rescue_scores.csv
+output_dir: outputs/boost_search/batchD3_consensus_rescue_eval
+time_col: timestamp
+split_col: split
+period_type_col: period_type
+event_id_col: event_id
+score_columns:
+- batchD3_hr_product
+- batchD3_hr_min
+- batchD3_base_or_hr_product
+- batchD3_base_or_hr_min
+- batchD3_strict_consensus_h035_r065
+- batchD3_base_or_strict_consensus_h035_r065
+- batchD3_strict_consensus_h04_r07
+- batchD3_base_or_strict_consensus_h04_r07
+- batchD3_hr_product_rollmean18
+- batchD3_base_or_hr_product_rollmean18
+- batchD3_hr_min_rollmean18
+- batchD3_base_or_hr_min_rollmean18
+- batchD3_hr_product_rollmean36
+- batchD3_base_or_hr_product_rollmean36
+- batchD3_hr_min_rollmean36
+- batchD3_base_or_hr_min_rollmean36
+- batchD3_hr_product_rollmean90
+- batchD3_base_or_hr_product_rollmean90
+- batchD3_hr_min_rollmean90
+- batchD3_base_or_hr_min_rollmean90
+- batchD3_co_slope_hgnn_rescue
+- batchD3_base_or_co_slope_hgnn_rescue
+splits:
+- test
+period_types:
+- event_rich
+- normal_operation
+thresholds:
+- 0.01
+- 0.014
+- 0.016
+- 0.018
+- 0.02
+- 0.025
+- 0.03
+- 0.04
+- 0.05
+- 0.075
+- 0.1
+- 0.15
+- 0.2
+- 0.25
+- 0.3
+- 0.35
+- 0.4
+- 0.45
+- 0.5
+merge_gap_minutes:
+- 30
+cooldown_minutes:
+- 30
+max_window_minutes:
+- 120
+lead_horizon_minutes: 240
+min_lead_minutes: 30

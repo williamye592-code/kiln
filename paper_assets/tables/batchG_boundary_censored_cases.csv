@@ -1,0 +1,2 @@
+event_id,event_start,event_end,available_valid_pre_minutes,n_valid_pre_rows,max_valid_pre_score,detected_with_valid_lead,first_valid_alarm_time,lead_minutes,is_lead_censored,max_event_score,max_co_relative,max_hgnn_score,max_rf_score
+52,2024-02-03 00:31:00,2024-02-03 00:58:00,1.0,12,0.0,False,,,True,0.3129286243374021,0.3196249609999999,0.3129286243374021,0.3631099892944642

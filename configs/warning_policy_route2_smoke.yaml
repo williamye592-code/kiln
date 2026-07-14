@@ -1,0 +1,27 @@
+input_path: outputs/predictions/risk_dataset_route2_boost_scores.csv
+output_dir: outputs/boost_search/route2_smoke_eval
+time_col: timestamp
+split_col: split
+period_type_col: period_type
+event_id_col: event_id
+score_columns:
+- co_relative
+- hgnn_score_co_gate_0p02
+- route2_hgnn_gate_0p02
+splits:
+- test
+period_types:
+- event_rich
+- normal_operation
+thresholds:
+- 0.016
+- 0.018
+- 0.02
+merge_gap_minutes:
+- 30
+cooldown_minutes:
+- 30
+max_window_minutes:
+- 120
+lead_horizon_minutes: 240
+min_lead_minutes: 30

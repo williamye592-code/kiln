@@ -1,0 +1,65 @@
+input_path: outputs/predictions/risk_dataset_route2_boost_scores.csv
+output_dir: outputs/boost_search/route2_slim_policy_eval
+time_col: timestamp
+split_col: split
+period_type_col: period_type
+event_id_col: event_id
+score_columns:
+- co_relative
+- rf_score
+- hgnn_score
+- risk_target
+- route2_hgnn_gate_0p018
+- route2_hgnn_gate_0p02
+- route2_hgnn_gate_0p022
+- route2_hgnn_gate_0p025
+- route2_blend_h70_r30_gate_0p018
+- route2_blend_h70_r30_gate_0p02
+- route2_blend_h70_r30_gate_0p022
+- route2_blend_h70_r30_gate_0p025
+- route2_blend_h85_r15_gate_0p018
+- route2_blend_h85_r15_gate_0p02
+- route2_blend_h85_r15_gate_0p022
+- route2_blend_h85_r15_gate_0p025
+- route2_max_hr_gate_0p018
+- route2_max_hr_gate_0p02
+- route2_max_hr_gate_0p022
+- route2_max_hr_gate_0p025
+- route2_hgnn_x_sqrtco_gate_0p018
+- route2_hgnn_x_sqrtco_gate_0p02
+- route2_hgnn_x_sqrtco_gate_0p022
+- route2_hgnn_x_sqrtco_gate_0p025
+splits:
+- test
+period_types:
+- event_rich
+- normal_operation
+thresholds:
+- 0.003
+- 0.004
+- 0.005
+- 0.006
+- 0.008
+- 0.01
+- 0.012
+- 0.014
+- 0.016
+- 0.018
+- 0.02
+- 0.022
+- 0.025
+- 0.03
+- 0.04
+- 0.05
+- 0.075
+- 0.1
+- 0.15
+- 0.2
+merge_gap_minutes:
+- 30
+cooldown_minutes:
+- 30
+max_window_minutes:
+- 120
+lead_horizon_minutes: 240
+min_lead_minutes: 30

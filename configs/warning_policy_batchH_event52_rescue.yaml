@@ -1,0 +1,44 @@
+input_path: outputs/predictions/risk_dataset_batchH_event52_rescue_scores.csv
+output_dir: outputs/boost_search/batchH_event52_rescue_eval
+time_col: timestamp
+split_col: split
+period_type_col: period_type
+event_id_col: event_id
+score_columns:
+- batchH_base_or_absco_tail
+- batchH_base_or_absco_motor
+- batchH_base_or_tail_motor
+- batchH_base_or_absco_tail_motor
+- batchH_base_or_absco_tail_persist6_m2
+- batchH_base_or_absco_motor_persist6_m2
+- batchH_base_or_tail_motor_persist6_m2
+- batchH_base_or_absco_tail_motor_persist6_m2
+- batchH_base_or_absco_tail720_motor
+- batchH_base_or_absco_tail720_motor_persist6_m2
+splits:
+- test
+period_types:
+- event_rich
+- normal_operation
+thresholds:
+- 0.01
+- 0.012
+- 0.014
+- 0.016
+- 0.018
+- 0.02
+- 0.025
+- 0.03
+- 0.04
+- 0.05
+- 0.075
+- 0.1
+- 0.12
+merge_gap_minutes:
+- 30
+cooldown_minutes:
+- 30
+max_window_minutes:
+- 120
+lead_horizon_minutes: 240
+min_lead_minutes: 30

@@ -1,0 +1,60 @@
+input_path: outputs/predictions/risk_dataset_batchD_smoothing_rescue_scores.csv
+output_dir: outputs/boost_search/batchD_smoothing_rescue_eval
+time_col: timestamp
+split_col: split
+period_type_col: period_type
+event_id_col: event_id
+score_columns:
+- batchD_base023_rollmean18
+- batchD_base023_rollmax18
+- batchD_base023_rollmean36
+- batchD_base023_rollmax36
+- batchD_base023_rollmean90
+- batchD_base023_rollmax90
+- batchD_base023_rollmean180
+- batchD_base023_rollmax180
+- batchD_base023_persist_w18_m3
+- batchD_base023_persist_w36_m4
+- batchD_base023_persist_w90_m6
+- batchD_base023_persist_w180_m10
+- batchD_softgate023_temp0p003
+- batchD_softgate023_temp0p005
+- batchD_softgate023_temp0p008
+- batchD_or_base023_rf_gate_0p01
+- batchD_or_base023_hgnn_lowgate_0p01
+- batchD_or_base023_rf_gate_0p014
+- batchD_or_base023_hgnn_lowgate_0p014
+- batchD_or_base023_rf_gate_0p018
+- batchD_or_base023_hgnn_lowgate_0p018
+splits:
+- test
+period_types:
+- event_rich
+- normal_operation
+thresholds:
+- 0.004
+- 0.006
+- 0.008
+- 0.01
+- 0.012
+- 0.014
+- 0.016
+- 0.018
+- 0.02
+- 0.022
+- 0.025
+- 0.03
+- 0.04
+- 0.05
+- 0.075
+- 0.1
+- 0.15
+- 0.2
+merge_gap_minutes:
+- 30
+cooldown_minutes:
+- 30
+max_window_minutes:
+- 120
+lead_horizon_minutes: 240
+min_lead_minutes: 30

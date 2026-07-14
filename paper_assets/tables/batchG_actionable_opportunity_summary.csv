@@ -1,0 +1,9 @@
+metric,value,description
+total_labeled_event_rich_events,19.0,All labeled test events on event-rich days.
+overall_detected_events,18.0,Detected events among all labeled event-rich events.
+overall_event_detection_rate,0.9473684210526315,Overall event-level detection rate before censoring adjustment.
+lead_censored_boundary_events,1.0,Events without sufficient valid pre-event time for the required lead constraint.
+actionable_evaluable_events,18.0,Events with sufficient actionable pre-event context.
+actionable_detected_events,18.0,Detected events among actionable-evaluable events.
+actionable_detection_rate,1.0,Opportunity-adjusted detection rate.
+remaining_actionable_missed_events,0.0,Missed events after excluding lead-censored boundary events.
