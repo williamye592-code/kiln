@@ -26,3 +26,21 @@ outputs_hgnn_tt/
 outputs_baselines/
 *.npz
 *.pt
+# Python / Colab
+*.pyc
+.ipynb_checkpoints/
+# Model weights and large binary artifacts
+outputs/checkpoints/
+*.pth
+*.ckpt
+*.joblib
+*.pkl
+# Large generated datasets and search outputs
+outputs/predictions/
+outputs/policy_eval/
+outputs/boost_search/
+# Local snapshots
+kiln_full_checkpoints/
+# Logs and temporary files
+*.log
+*.tmp
